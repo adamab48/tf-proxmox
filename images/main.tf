@@ -1,10 +1,17 @@
-resource "proxmox_virtual_environment_download_file" "alpine" {
-  content_type        = "iso"
-  datastore_id        = "local"
-  node_name           = "bigoi"
-  url                 = "https://dl-cdn.alpinelinux.org/alpine/v3.21/releases/x86_64/alpine-virt-3.21.2-x86_64.iso"
-  verify              = false
-  overwrite           = false
-  overwrite_unmanaged = false
+
+
+
+resource "proxmox_virtual_environment_download_file" "images" {
+  for_each = var.images
+
+  content_type   = each.value.content_type
+  datastore_id   = var.datastore_id
+  node_name      = var.node_name
+  url            = each.value.url
+  upload_timeout = "3600"
+  verify         = false
+  overwrite      = false
 }
+
+# outputs.tf
 
