@@ -1,15 +1,16 @@
-
-
-module "test-vm" {
-  source       = "./vm"
+resource "proxmox_virtual_environment_download_file" "alpine" {
+  content_type = "iso"
+  datastore_id = "local"
   node_name    = "bigoi"
-  username     = "test"
-  datastore_id = "local-lvm"
-  disk_size    = 30
-  hostname     = "vm-test"
-  tags         = ["terraform", "ubuntu", "test"]
-  on           = true
-  # vlan_id = 12
-  bridge           = "vmbr0"
-  template_file_id = proxmox_virtual_environment_download_file.alpine.id
+  url          = "https://dl-cdn.alpinelinux.org/alpine/v3.21/releases/x86_64/alpine-virt-3.21.2-x86_64.iso"
+  verify       = false
 }
+
+resource "proxmox_virtual_environment_download_file" "ubuntu_24" {
+  content_type = "iso"
+  datastore_id = "local"
+  node_name    = "bigoi"
+  url          = "https://cloud-images.ubuntu.com/releases/24.04/release/ubuntu-24.04-server-cloudimg-amd64.img"
+  verify       = false
+}
+
