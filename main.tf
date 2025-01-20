@@ -12,5 +12,5 @@ module "test-vm" {
   tags             = ["terraform", "ubuntu", "test"]
   on               = true
   bridge           = "vmbr0"
-  template_file_id = module.images.alpine.id
+  template_file_id = module.images.alpine_image_id
 }
