@@ -1,0 +1,11 @@
+# Creds
+export PROXMOX_VE_USERNAME="terraform-prov@pve"
+export PROXMOX_VE_PASSWORD='REDACTED'
+# API
+export PROXMOX_VE_ENDPOINT="https://192.168.1.201:8006/api2/json"
+export PROXMOX_VE_INSECURE="true"
+export PROXMOX_VE_SSH_USERNAME="root"
+export PROXMOX_VE_SSH_PASSWORD="REDACTED"
+# note the format here
+export PROXMOX_VE_API_TOKEN=terraform-prov@pve!api=REDACTED
+# use ssh-add <file> to connect
